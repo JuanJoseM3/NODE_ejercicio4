@@ -3,7 +3,7 @@ const dotenv = require('dotenv');            //Importar la librería para el man
 
 dotenv.config({ path: './config.env' });     //Indicar la ruta donde se alojan las variables de entorno
 
-const db = new Sequelize({
+const db = new Sequelize("postgres://postgres:postgres@localhost/gql", {
     dialect: 'postgres',      
     host: process.env.DB_HOST,        //process.env.DB_HOST
     username: process.env.DB_USERNAME,     //process.env.DB_USERNAME
