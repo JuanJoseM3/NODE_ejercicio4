@@ -10,7 +10,7 @@ db.authenticate()
 User.hasMany(Repair);
 Repair.belongsTo(User);
 
-db.sync({ force: true })
+db.sync()
     .then(() => console.log('Database synced'))
     .catch(err => console.log(err));
 
