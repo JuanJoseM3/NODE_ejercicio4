@@ -1,11 +1,11 @@
 const express = require('express');
 const { globalErrorHandler } = require('./controllers/errors.controller');
-
+const dotenv = require('dotenv');
 
 const { usersRoter } = require('./routes/user.routes');
 const { repairsRouter } = require('./routes/repair.routes');
 
-
+dotenv.config({ path: './config.env' });
 
 const helmet = require('helmet');
 const compression = require('compression');
