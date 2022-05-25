@@ -5,11 +5,20 @@ dotenv.config({ path: './config.env' });     //Indicar la ruta donde se alojan l
 
 const db = new Sequelize({
     dialect: 'postgres',      
-    host: 'localhost',        //process.env.DB_HOST
-    username: 'postgres',     //process.env.DB_USERNAME
-    password: 'PoStGrEs13',   //process.env.DB_PASSWORD
-    database: 'computers',    //process.env.DB
-    logging: false
+    host: process.env.DB_HOST,        //process.env.DB_HOST
+    username: process.env.DB_USERNAME,     //process.env.DB_USERNAME
+    password: process.env.DB_PASSWORD,   //process.env.DB_PASSWORD
+    database: process.env.DB,    //process.env.DB
+    logging: false,
+    dialectOptions:
+        process.env.NODE_ENV === 'production'
+            ? {
+                ssl: {
+                    require: true,
+                    rejectUnauthorized: false,
+                },
+            }
+        : {}
 });
 
 module.exports = { db };
